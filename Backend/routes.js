@@ -46,7 +46,7 @@ class Routes {
     logger.info("Default route");
   }
 
-  // INCOMINT REQUEST HANDLER
+  // INCOMING REQUEST HANDLER
   handler(request, response) {
     response.setHeader("Access-Control-Allow-Origin", "*");
     const choosen = this[request.method.toLowerCase()] || this.defaultRoute;
