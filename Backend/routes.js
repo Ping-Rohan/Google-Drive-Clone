@@ -15,6 +15,7 @@ class Routes {
 
   // FOR ANY POST REQUEST
   async post(request, response) {
+    console.log(request.rawBody);
     const {
       query: { socketId },
     } = url.parse(request.url, true);

@@ -28,7 +28,7 @@ class UploadHandler {
         // YOU MUST BIND THIS KEYWORD TO GENERATOR FUNCTION
         processedBytes += chunk.length;
         logger.info(`Processed ${processedBytes}`);
-        this.#io.to(this.#socketId).emit(SUCCESSFUL_UPLOAD_EVENT, processedBytes);
+        this.#io.emit("ack", "Uploading " + processedBytes + " Bytes");
         yield chunk;
       }
     }
@@ -36,6 +36,7 @@ class UploadHandler {
   }
 
   async onFile(field, file, { filename: fileName }) {
+    console.log(file);
     const destinationFolder = `${this.#targetFolder}/${fileName}`;
     await pipeline(
       file,

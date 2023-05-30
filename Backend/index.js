@@ -20,6 +20,7 @@ route_handler.setSocketEndpoint(io);
 
 io.on("connection", (socket) => {
   logger.info(`A client connected...`);
+  socket.emit("msg", "hello rohan");
 });
 
 server.listen(PORT_NUMBER, () => logger.info(`App running at port : ${PORT_NUMBER}`));
